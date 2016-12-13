@@ -44,8 +44,8 @@ def textFromOcr(f: String) = {
 }
 
 @main
-  def ocr(f: String) = {
-textFromOcr(f)
+def ocr(files: String*) = {
+  for (f <- files) {
+    textFromOcr(f)
   }
-
-//crReader.main(args)
+}
