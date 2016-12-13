@@ -24,7 +24,7 @@ def clusterTokens(f: String) {
   // We want to find any text before this containing an article
   val article = "article" // probalby "article"
 
-  goodSentences.map {
+  val matchPhrases = goodSentences.map {
     svect => val index = svect.indexOf(stringIWant);
     val preceding = svect.slice(0,index);
     val articles = preceding.filter(_.contains(article))
@@ -34,5 +34,8 @@ def clusterTokens(f: String) {
       val articleIndex = preceding.indexOf(articles(articles.size - 1) );
       svect.slice(articleIndex,index).mkString(" ")
     }
+  }
+  for (phrase <- matchPhrases) {
+    println(phrase)
   }
 }
