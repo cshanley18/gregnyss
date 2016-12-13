@@ -20,7 +20,7 @@ Read from 2-column file in previous step:
 
     amm scripts/uniqueWords.sc data/gregNyss.tsv > data/uniqueWordList.txt
 
-### 3. NOT YET TESTED
+
 
 ### 3. Collect morphology results
 
