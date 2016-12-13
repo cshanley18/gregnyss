@@ -12,7 +12,12 @@ def getMorphology(f: String){
   val sortedWords = uniqueWords.toVector.sorted
   for (w <- sortedWords) {
     val parseReply = parse(w)
-    println(w + "\t" + parseReply)
+    if (parseReply.isEmpty) {
+       // skip it.
+    } else {
+      println(w + "\t" + parseReply)
+    }
+
   }
 }
 
@@ -20,7 +25,7 @@ def getMorphology(f: String){
 def  getMorphReply(request: String) : String = {
   var reply : String = ""
   try {
-    reply = scala.io.Source.fromURL(request).mkString.replaceAll("\n"," ")
+    reply = scala.io.Source.fromURL(request).mkString.replaceAll("\n"," ").replaceAll("\t", " ")
   } catch {
     case _ => reply = "" // Error from parsing service
   }
