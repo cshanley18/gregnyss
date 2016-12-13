@@ -19,3 +19,17 @@ The resulting file should be in two columns, with new documents marked by lines 
 Read from 2-column file in previous step:
 
     amm scripts/uniqueWords.sc data/gregNyss.tsv > data/uniqueWordList.txt
+
+### 3. NOT YET TESTED
+
+### 3. Collect morphology results
+
+Work on unique word list, and create a two-column output with word + list of analyses.
+
+    amm scripts/getMorphology.sc data/uniqueWordList.text > morphologyResults.tsv
+
+
+
+### 4. Extract part of speech info
+
+    amm scripts/extractMorpheusPoS.sc morphologyResults.tsv > data/posInfo.tsv
