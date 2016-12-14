@@ -38,6 +38,7 @@ Work on unique word list, and create a two-column output with word + list of ana
 
     alignSourceParseModified.sc > alignSourcePos16.tsv
 
+//This is failing.  Should produce sliding pairs for every part of speech in the aligned text, but only yields pairs for five words.  Document with partial sliding pairs is posPairs16.tsv
 ### 6. Produce sliding pairs for aligned text
 
     amm scripts/slidingScript.sc data/alignSourcePos16.tsv > posPairs16.tsv
