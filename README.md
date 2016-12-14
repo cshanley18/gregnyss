@@ -32,4 +32,12 @@ Work on unique word list, and create a two-column output with word + list of ana
 
 ### 4. Extract part of speech info
 
-    amm scripts/extractMorpheusPoS.sc morphologyResults.tsv > data/posInfo.tsv
+    amm scripts/extractMorpheusPoS.sc morphologyResults.tsv > data/posInfo16.tsv
+
+### 5. Align Parts of Speech with Source text
+
+    alignSourceParseModified.sc > alignSourcePos16.tsv
+
+### 6. Produce sliding pairs for aligned text
+
+    amm scripts/slidingScript.sc data/alignSourcePos16.tsv > posPairs16.tsv
