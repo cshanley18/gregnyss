@@ -6,23 +6,28 @@ import scala.io.Source
 import scala.xml._
 
 @main
-  def getMorphology(f: String){
-    val wordList = Source.fromFile(f).getLines.toVector
-    val uniqueWords = wordList.distinct
-    val sortedWords = uniqueWords.toVector.sorted
-    for (w <- sortedWords) {
-      val parseReply = parse(w)
+def getMorphology(f: String){
+  val wordList = Source.fromFile(f).getLines.toVector
+  val uniqueWords = wordList.distinct
+  val sortedWords = uniqueWords.toVector.sorted
+  for (w <- sortedWords) {
+    val parseReply = parse(w)
+    if (parseReply.isEmpty) {
+       // skip it.
+    } else {
       println(w + "\t" + parseReply)
     }
+
   }
+}
 
 
 def  getMorphReply(request: String) : String = {
   var reply : String = ""
   try {
-    reply = scala.io.Source.fromURL(request).mkString.replaceAll("\n"," ")
+    reply = scala.io.Source.fromURL(request).mkString.replaceAll("\n"," ").replaceAll("\t", " ")
   } catch {
-    case _ => reply = "Error from parsing service."
+    case _ => reply = "" // Error from parsing service
   }
   reply
 }

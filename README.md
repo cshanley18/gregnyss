@@ -10,7 +10,7 @@
 Take raw OCR files in HOCR format, and extract text contents.
 The resulting file should be in two columns, with new documents marked by lines beginning "TEXT".  Example:
 
-    amm scripts/textFromOCRScript.scala ocr/*.html >   gregNyssSourceText2.tsv
+    amm scripts/textFromOCRScript.sc ocr/*.html >   gregNyss.tsv
 
 
 
@@ -32,4 +32,13 @@ Work on unique word list, and create a two-column output with word + list of ana
 
 ### 4. Extract part of speech info
 
-    amm scripts/extractMorpheusPoS.sc morphologyResults.tsv > data/posInfo.tsv
+    amm scripts/extractMorpheusPoS.sc morphologyResults.tsv > data/posInfo16.tsv
+
+### 5. Align Parts of Speech with Source text
+
+    alignSourceParseModified.sc > alignSourcePos16.tsv
+
+//This is failing.  Should produce sliding pairs for every part of speech in the aligned text, but only yields pairs for five words.  Document with partial sliding pairs is posPairs16.tsv
+### 6. Produce sliding pairs for aligned text
+
+    amm scripts/slidingScript.sc data/alignSourcePos16.tsv > posPairs16.tsv

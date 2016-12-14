@@ -70,7 +70,6 @@ def extractPoS(fName : String) {
     entryData
   }
 
-  println("ANALYSES: " + morphAnalyses)
   // Zip together surface forms and analyses:
   val idAnalyzed = idColumn.zip(morphAnalyses)
 
